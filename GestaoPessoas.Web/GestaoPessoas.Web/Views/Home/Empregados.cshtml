@@ -1,0 +1,39 @@
+﻿@model IEnumerable<GestaoPessoas.Web.Models.EmpregadoMOD>
+
+@{
+    ViewBag.Title = "Empregados";
+}
+
+<h2>Listagem de Empregados</h2>
+
+<p>
+    <a href="/Home/Criar" class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpregadoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th> 
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpregadoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td> 
+        <td>
+            @Html.ActionLink("Editar", "Editar", new { id=item.EmpregadoId}, new { @class = "waves-effect waves-light btn" }) |
+            @Html.ActionLink("Detalhes", "Detalhes", new { id = item.EmpregadoId }, new { @class = "waves-effect waves-light btn" }) |
+            @Html.ActionLink("Excluir", "Excluir", new { id = item.EmpregadoId }, new { @class = "waves-effect waves-light btn" })
+        </td>
+    </tr>
+}
+
+</table>
